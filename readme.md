@@ -11,11 +11,11 @@ Vi kan smide SASS på igen, fordi det er smart.
 
 ## APi
 
-# Joke API.
+ Joke API.
 
 Det er en opgave der skal kunne hives jokes frem fra databasen.
 
-# Cars
+ Cars API
 
 I dont know, noget med en liste der skal laves.
 
@@ -32,6 +32,10 @@ Den skal laves, så vi skal lige blive enige om nogen ting.
 
 Fuck det, men det skal være der.
 
+
+## Test's
+
+Vi skal jo teste det hele godt. tænker vi skal prøve at lave noget sjovt med det.
 
 
 ### Extra Features
