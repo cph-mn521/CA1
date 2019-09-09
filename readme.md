@@ -1,4 +1,4 @@
-### Features:
+# Features:
 
 Her er til en liste af features vi gerne vil lave.
 
@@ -11,11 +11,11 @@ Vi kan smide SASS på igen, fordi det er smart.
 
 ## APi
 
- Joke API.
+### Joke API.
 
 Det er en opgave der skal kunne hives jokes frem fra databasen.
 
- Cars API
+### Cars API
 
 I dont know, noget med en liste der skal laves.
 
@@ -38,7 +38,7 @@ Fuck det, men det skal være der.
 Vi skal jo teste det hele godt. tænker vi skal prøve at lave noget sjovt med det.
 
 
-### Extra Features
+# Extra Features
 
 ## Nested Enteties.
 
