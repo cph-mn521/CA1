@@ -10,27 +10,53 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
- * @author Martin
+ * @author Niels
  */
 @Entity
-public class Member implements Serializable {
+@NamedQueries({
+    @NamedQuery(name = "Members.getAll", query = "SELECT m FROM Members m")
+})
+public class Members implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Member(){}
-    
+    private String name;
+
+    private String color;
+
+    public Members() {
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     @Override
@@ -43,10 +69,10 @@ public class Member implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Member)) {
+        if (!(object instanceof Members)) {
             return false;
         }
-        Member other = (Member) object;
+        Members other = (Members) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -57,5 +83,5 @@ public class Member implements Serializable {
     public String toString() {
         return "Entities.Member[ id=" + id + " ]";
     }
-    
+
 }
