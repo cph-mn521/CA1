@@ -22,6 +22,74 @@ public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private int year;
+    private String make;
+    private String model;
+    private double price;
+//    private String created;
+    private String owner;
+    private String plateNumber;
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
+    }
+
+    public Car() {
+    }
+
+    public Car(int year, String make, String model, double price, String owner, String plateNumber) {
+        this.year = year;
+        this.make = make;
+        this.model = model;
+        this.price = price;
+//        this.created = created;
+        this.owner = owner;
+        this.plateNumber = plateNumber;
+    }
 
     public Long getId() {
         return id;

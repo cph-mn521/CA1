@@ -5,6 +5,14 @@
  */
 package REST;
 
+import Entities.Car;
+import Facades.CarFacade;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -19,8 +27,11 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Martin
  */
-@Path("generic")
+@Path("car")
 public class CarResource {
+
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static final CarFacade FACADE =  CarFacade.getFacade(Persistence.createEntityManagerFactory("pu"));
 
     @Context
     private UriInfo context;
@@ -30,9 +41,23 @@ public class CarResource {
      */
     public CarResource() {
     }
+    
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String demo() {
+        return "{\"msg\":\"Hej verden!\"}";
+    }
+    
+    @Path("all")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getAllMovies() {
+        return GSON.toJson(FACADE.getAllCars());
+    }
 
     /**
      * Retrieves representation of an instance of REST.GenericResource
+     *
      * @return an instance of java.lang.String
      */
     @GET
@@ -44,6 +69,7 @@ public class CarResource {
 
     /**
      * PUT method for updating or creating an instance of GenericResource
+     *
      * @param content representation for the resource
      */
     @PUT

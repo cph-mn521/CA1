@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="allCars()">
+        <div>TODO write content</div>
+        <p id="test"></p>
+        <div id="table"></div>
+        <script>
+
+
+            function allCars() {
+                fetch("http://localhost:8080/CA1/api/car/all")
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+                            // Inside this callback, and only here, the response data is available
+                            console.log("data", data);
+
+
+                            /* data now contains the response, converted to JavaScript
+                             Observe the output from the log-output above
+                             Now, just build your DOM changes using the data*/
+                             document.getElementById("table").innerHTML = createTable(data);
+                        })
+            }
+
+            function createTable(data) {
+                var table = "<table>";
+                table += "<tr><th>Id</th><th>Year</th><th>Make</th><th>Model</th><th>Price</th></tr>";
+                for (var i = 0, max = data.length; i < max; i++) {
+                    table += "<tr><td>" + data[i]["id"] + "</td><td>" + data[i]["year"] + "</td><td>" + data[i]["make"] + "</td><td>" + data[i]["Model"] + "</td><td>" + data[i]["price"] + "</td></tr>"
+
+                }
+                table += "</table>";
+                return table;
+
+            }
+
+        </script>
+    </body>
+</html>
