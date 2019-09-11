@@ -12,7 +12,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author nille
+ * @author Niels
  */
 public class MembersFacade {
 
@@ -36,12 +36,43 @@ public class MembersFacade {
         return instance;
     }
 
-    private EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
-
     public List<Members> getAll() {
         EntityManager em = emf.createEntityManager();
         return em.createNamedQuery("Members.getAll").getResultList();
+    }
+
+    public Members getMemberBysId(String sId) {
+        EntityManager em = emf.createEntityManager();
+        return em.createNamedQuery("Members.getBysId", Members.class).setParameter("sId", sId).getSingleResult();
+    }
+
+    private Boolean isPopulated() {
+        EntityManager em = emf.createEntityManager();
+
+        return em.find(Members.class, 1) == null;
+    }
+
+    public void populate() {
+        EntityManager em = emf.createEntityManager();
+        if (isPopulated()) {
+            return;
+        }
+        Members A, B, C;
+        A = new Members("cph-nb168", "Niels B", "Rød");
+        B = new Members("cph-mn521", "Martin W", "Rød");
+        C = new Members("cph-jh409", "Jonatan H", "Gul-Rød");
+
+        try {
+            em.getTransaction().begin();
+            em.persist(A);
+            em.persist(B);
+            em.persist(C);
+
+            em.getTransaction().commit();
+
+        } finally {
+            em.close();
+        }
+
     }
 }
