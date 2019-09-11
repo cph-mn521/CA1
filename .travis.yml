@@ -23,8 +23,8 @@ before_script:
 - sudo sh -c 'echo "port=3307" >> /etc/mysql/mysql.conf.d/mysqld.cnf'
 - sudo systemctl start mysql
 
-
-- mysql -e 'create database CA1_test;'
+- sudo mysql -u root -e "CREATE User 'dev'@'localhost' IDENTIFIED BY 'ax2'; GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost' WITH GRANT OPTION;"
+- mysql -u dev -pax2 -e 'create database CA1_test;'
 
 
 #TODO Add variable to make it simple to be reusable for all semester projects
