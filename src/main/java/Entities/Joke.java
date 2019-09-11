@@ -22,7 +22,54 @@ public class Joke implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String Joke, Creator;
+    private double Score;
+    private int Votes;
 
+    public Joke(String Joke, String Creator, double Score, int Votes) {
+        this.Joke = Joke;
+        this.Creator = Creator;
+        this.Score = Score;
+        this.Votes = Votes;
+    }
+
+    public Joke() {
+    }
+
+    public String getJoke() {
+        return Joke;
+    }
+
+    public void setJoke(String Joke) {
+        this.Joke = Joke;
+    }
+
+    public String getCreator() {
+        return Creator;
+    }
+
+    public void setCreator(String Creator) {
+        this.Creator = Creator;
+    }
+
+    public double getScore() {
+        return Score;
+    }
+
+    public void setScore(double Score) {
+        this.Score = Score;
+    }
+
+    public int getVotes() {
+        return Votes;
+    }
+
+    public void setVotes(int Votes) {
+        this.Votes = Votes;
+    }
+    
+    
+            
     public Long getId() {
         return id;
     }
