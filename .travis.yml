@@ -2,7 +2,7 @@
 ## Make sure to rename the database name in the CREATE DATABASE script below to the SAME name as used for your local tests
 ---
 
-dist: trusty
+dist: bionic
 
 language: java
 
@@ -18,7 +18,14 @@ services:
    - mysql
 
 before_script:
+- sudo -E apt-get -y install mysql-server
+- sudo systemctl stop mysql
+- sudo sh -c 'echo "port=3307" >> /etc/mysql/mysql.conf.d/mysqld.cnf'
+- sudo systemctl start mysql
+
+
 - mysql -e 'create database CA1_test;'
+
 
 #TODO Add variable to make it simple to be reusable for all semester projects
 #- export DEBIAN_FRONTEND="noninteractive";
@@ -36,7 +43,7 @@ before_script:
 #- sudo apt-get update
 #
 #- echo "Installing MySQL 8..."
-#- sudo -E apt-get -y install mysql-server
+#
 #
 #- sudo mysql -u root -e "CREATE User 'dev'@'localhost' IDENTIFIED BY 'ax2'; GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost' WITH GRANT OPTION;"
 ## - sudo mysql -u ro startcodev2-test;"ot -e "CREATE DATABASE startcodev2-test;"
