@@ -26,9 +26,11 @@ import javax.persistence.NamedQuery;
 public class Joke implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String Joke, Creator;
     private double Score;
     private int Votes;

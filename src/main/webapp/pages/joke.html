@@ -2,61 +2,56 @@
 <html>
     <head>
         <title>Jokes</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     </head>
     <body>
         <h1>Her er der super fede jokes.</h1>
 
-        <div id="randomJoke">
+        <div id="randomJoke" >
             <h3 id="joke"></h3>
             <p id="creator"></p>
-            <p id="score"></p>
-            <form>
-                <fieldset>
-                    <legend>Vær sød at giv joken en score efter hvor sjov den var.</legend>
-                    <div>
-                        <input type="radio" id="1"
-                               name="contact" value="1" checked>
-                        <label for="1">1</label>
 
-                        <input type="radio" id="2"
-                               name="contact" value="2">
-                        <label for="2">2</label>
+            <fieldset>
+                <legend>Vær sød at giv joken en score efter hvor sjov den var.</legend>
+                <div>
+                    <form onsubmit="return false" id="pointForm" name ="pointForm" onclick="dispVote()">
+                        <input type="radio" name="point" value="1"> 1
+                        <input type="radio" name="point" value="2"> 2
+                        <input type="radio" name="point" value="3"> 3
+                        <input type="radio" name="point" value="4"> 4
+                        <input type="radio" name="point" value="5"> 5
+                        <input id="vote" type="submit" onclick="post()" style="display:none;">
+                    </form>
+                </div>
+            </fieldset>
 
-                        <input type="radio" id="3"
-                               name="contact" value="3">
-                        <label for="3">3</label>
-                        
-                        <input type="radio" id="4"
-                               name="contact" value="4">
-                        <label for="4">4</label>
-                        
-                        <input type="radio" id="5"
-                               name="contact" value="5">
-                        <label for="5">5</label>
-                    </div>
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
-                </fieldset>
-            </form>
         </div>
 
         <div id="scoreboad">
             <table>
-                <thead>
-
+                <thead class="table ">
+                    <tr>
+                        <th>Forfatter</th>
+                        <th>Score</th>
+                        <th>Stemmer</th>
+                        <th>id</th>
+                    </tr>
                 </thead>
-                <tbody>
+                <tbody id="table" class="table table-hover">
 
                 </tbody>
             </table>
         </div>
-        
+        <div id="like_button_container"></div>
         <div id="haddock">
             <p></p>
         </div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="js/JokeScript.js"></script>
+        <script src="js/jokeScript.js"></script>
     </body>
 </html>

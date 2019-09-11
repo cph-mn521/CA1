@@ -15,7 +15,7 @@ import javax.persistence.EntityManagerFactory;
  *
  * @author Martin
  */
-public class JokeFacade{
+public class JokeFacade {
 
     private static JokeFacade instance;
     private static EntityManagerFactory emf;
@@ -41,12 +41,13 @@ public class JokeFacade{
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////  UPDATE METHODS ///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////      
-
     public void update(Joke J) {
         EntityManager em = emf.createEntityManager();
         try {
+            Joke DJ = em.find(Joke.class, J.getId());
             em.getTransaction().begin();
-            em.persist(J);
+            DJ.setScore(J.getScore());
+            DJ.setVotes(J.getVotes());
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,14 +56,15 @@ public class JokeFacade{
         }
     }
 
-    public double vote(Joke j, int Score){
-        j.setScore(j.getScore()+Score);
-        j.setVotes(j.getVotes()+1);
-        return j.getScore()/j.getVotes();        
+    public double vote(Joke j, int Score) {
+        j.setScore(j.getScore() + Score);
+        j.setVotes(j.getVotes() + 1);
+        return j.getScore() / j.getVotes();
     }
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////  GET METHODS //////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////    
+
     /**
      *
      * @return
@@ -80,7 +82,7 @@ public class JokeFacade{
     public Joke getRandom() {
         EntityManager em = emf.createEntityManager();
         Random r = new Random();
-        long id = (long)r.nextInt((int)count-1)+1;
+        long id = (long) r.nextInt((int) count - 1) + 1;
         return em.find(Joke.class, id);
     }
 
@@ -101,7 +103,7 @@ public class JokeFacade{
 ///////////////////////////  CREATE METHODS ///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////     
 
-    public Joke createMovie(Joke J) {
+    public Joke createJoke(Joke J) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -121,14 +123,14 @@ public class JokeFacade{
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
-            em.persist(new Joke("knock kncok; whos there? boo; boo who?; Stop crying...", "MWUN", 0, 0));
-            em.persist(new Joke("Hvorfor gik kyllingen over vejen?", "MWUN", 0, 0));
-            em.persist(new Joke("Niels er dum, haha, det er jo sjovt.", "MWUN", 0, 0));
-            em.persist(new Joke("reeee", "MWUN", 0, 0));
+            em.persist(new Joke("knock kncok; whos there? boo; boo who?; Stop crying...", "MWUN", 12, 4));
+            em.persist(new Joke("Hvorfor gik kyllingen over vejen?", "MWUN", 30, 10));
+            em.persist(new Joke("Niels er dum, haha, det er jo sjovt.", "MWUN", 5, 1));
+            em.persist(new Joke("reeee", "MWUN", 100, 1));
             em.getTransaction().commit();
         } finally {
             em.close();
+            count = getCount();
         }
-        Joke J = new Joke("knock kncok; whos there? boo; boo who?; Stop crying...", "MWUN", 0, 0);
     }
 }

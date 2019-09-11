@@ -17,6 +17,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -43,18 +44,19 @@ public class JokeResource {
             "ax2",
             EMF_Creator.Strategy.CREATE);
     private static final JokeFacade FACADE = JokeFacade.Get(EMF);
+
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @Context
     private UriInfo context;
 
-    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String hello(){
-        return "{\"msg\":\"hello\"}";
+    public String hello() {
+        Joke j = FACADE.getRandom();
+        return GSON.toJson(j);
     }
-    
+
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -69,30 +71,15 @@ public class JokeResource {
         FACADE.populate();
     }
 
-    @Path("vote")
     @POST
-    @Produces({MediaType.APPLICATION_JSON})
-    public String getById(@QueryParam("Joke") Joke J,
-            @QueryParam("score") int Score) {
-        double s = FACADE.vote(J, Score);
-        return "{\"msg\":\"Joken har nu den scoren:" + s + "\"}";
-    }
-
-    private ExecutorService executorService = java.util.concurrent.Executors.newCachedThreadPool();
-
-    @GET
-    @Path("rand")
-    @Produces(value = MediaType.APPLICATION_JSON)
-    public void random(@Suspended final AsyncResponse asyncResponse) {
-        executorService.submit(new Runnable() {
-            public void run() {
-                asyncResponse.resume(doRandom());
-            }
-        });
-    }
-
-    private String doRandom() {
-        Joke j = FACADE.getRandom();
+    @Path("vote")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String vote(@FormParam("param1") String joke,
+                   @FormParam("param2") int score){
+        Joke j = GSON.fromJson(joke, Joke.class);
+        j.setScore(j.getScore()+score);
+        j.setVotes(j.getVotes()+1);
+        FACADE.update(j);
         return GSON.toJson(j);
     }
 
