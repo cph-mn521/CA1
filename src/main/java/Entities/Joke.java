@@ -10,12 +10,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Martin
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Joke.deleteAllRows", query = "DELETE from Joke"),
+    @NamedQuery(name = "Joke.getAll", query = "SELECT m FROM Joke m"),
+    @NamedQuery(name = "Joke.getByName", query = "SELECT m FROM Joke m WHERE m.Creator LIKE :Creator")
+})
 public class Joke implements Serializable {
 
     private static final long serialVersionUID = 1L;
