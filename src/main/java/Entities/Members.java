@@ -6,6 +6,7 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,11 +29,17 @@ public class Members implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String sId;
     private String name;
-
     private String color;
 
     public Members() {
+    }
+
+    public Members(String sId, String name, String color) {
+        this.sId = sId;
+        this.name = name;
+        this.color = color;
     }
 
     public Long getId() {
@@ -61,19 +68,34 @@ public class Members implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Members)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Members other = (Members) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Members other = (Members) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.sId, other.sId)) {
+            return false;
+        }
+        if (!Objects.equals(this.color, other.color)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -81,7 +103,7 @@ public class Members implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.Member[ id=" + id + " ]";
+        return "Members{" + "id=" + id + ", sId=" + sId + ", name=" + name + ", color=" + color + '}';
     }
 
 }
