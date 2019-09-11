@@ -20,11 +20,21 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Members.getAll", query = "SELECT m FROM Members m")
+    @NamedQuery(name = "Members.getAll", query = "SELECT m FROM Members m"),
+    @NamedQuery(name = "Members.deleteAllRows", query = "DELETE from Members"),
+    @NamedQuery(name = "Members.getBysId", query = "SELECT m FROM Members m WHERE m.sid LIKE :sId")
 })
 public class Members implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public String getsId() {
+        return sId;
+    }
+
+    public void setsId(String sId) {
+        this.sId = sId;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -103,7 +113,7 @@ public class Members implements Serializable {
 
     @Override
     public String toString() {
-        return "Members{" + "id=" + id + ", sId=" + sId + ", name=" + name + ", color=" + color + '}';
+        return "Member{" + "id=" + id + ", sId=" + sId + ", name=" + name + ", color=" + color + '}';
     }
 
 }
