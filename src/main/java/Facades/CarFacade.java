@@ -69,10 +69,10 @@ public class CarFacade {
         }
     }
 
-    
-
     public static void main(String[] args) {
         CarFacade cf = getFacade(Persistence.createEntityManagerFactory("pu"));
-        cf.addCar(new Car(2002, "Ford", "Mondeo", 250000, "Lars", "BX29038"));
+        //cf.addCar(new Car(1999, "Ford", "Ka", 5000, "Peter", "AK47566"));
+        //cf.addCar(new Car(2002, "Audi", "A6", 60000, "Ib", "SK44320"));
+
     }
 }
