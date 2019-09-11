@@ -12,6 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <remote.server>https://www.matheradical.dk/manager/text</remote.server>
     </properties>
     
     <dependencies>
