@@ -37,15 +37,24 @@ import util.EMF_Creator;
 public class JokeResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-                "pu",
-                "jdbc:mysql://localhost:3307/CA1",
-                "dev",
-                "ax2",
-                EMF_Creator.Strategy.CREATE);
+            "pu",
+            "jdbc:mysql://localhost:3307/CA1",
+            "dev",
+            "ax2",
+            EMF_Creator.Strategy.CREATE);
     private static final JokeFacade FACADE = JokeFacade.Get(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
+    @Context
+    private UriInfo context;
 
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String hello(){
+        return "{\"msg\":\"hello\"}";
+    }
+    
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,25 +62,26 @@ public class JokeResource {
         List<Joke> j = FACADE.getAll();
         return GSON.toJson(j);
     }
-    
+
     @GET
     @Path("pop")
-    public void populate(){
+    public void populate() {
         FACADE.populate();
     }
 
     @Path("vote")
     @POST
     @Produces({MediaType.APPLICATION_JSON})
-    public String getById(@QueryParam("Joke") Joke J, 
-                          @QueryParam("score") int Score ) {        
-        double s = FACADE.vote(J,Score);
-        return "{\"msg\":\"Joken har nu den scoren:" +s+"\"}";
+    public String getById(@QueryParam("Joke") Joke J,
+            @QueryParam("score") int Score) {
+        double s = FACADE.vote(J, Score);
+        return "{\"msg\":\"Joken har nu den scoren:" + s + "\"}";
     }
-    
-    
+
     private ExecutorService executorService = java.util.concurrent.Executors.newCachedThreadPool();
+
     @GET
+    @Path("rand")
     @Produces(value = MediaType.APPLICATION_JSON)
     public void random(@Suspended final AsyncResponse asyncResponse) {
         executorService.submit(new Runnable() {
@@ -85,6 +95,5 @@ public class JokeResource {
         Joke j = FACADE.getRandom();
         return GSON.toJson(j);
     }
-    
-    
+
 }
