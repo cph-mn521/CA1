@@ -15,6 +15,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -67,5 +68,18 @@ public class MembersResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String getAll() {
         return GSON.toJson(FACADE.getAll());
+    }
+
+    /**
+     * Get method for getting a single member by student Id.
+     *
+     * @param sId
+     * @return the requested member.
+     */
+    @Path("{sId}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMemberBysId(@PathParam("sId") String sId) {
+        return GSON.toJson(FACADE.getMemberBysId(sId));
     }
 }

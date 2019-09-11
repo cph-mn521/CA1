@@ -101,4 +101,13 @@ public class MembersResourceTest {
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("sId", containsInAnyOrder(A.getsId(), B.getsId(), C.getsId()));
     }
+
+    @Test
+    public void testGetMembersBysId() throws Exception {
+        given().contentType(ContentType.JSON)
+                .get("/groupmembers/" + A.getsId()).then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("sId", equalTo(A.getsId()));
+    }
 }
