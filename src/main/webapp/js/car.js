@@ -13,24 +13,60 @@ function getData() {
 }
 ////SORT METHODS////
 function sortByMake() {
-    cars.sort((a, b) => (a.make > b.make) ? 1 : -1);
-    createTable(cars);
+    if (reverse) {
+        cars.sort((a, b) => (b.make > a.make) ? 1 : -1);
+        createTable(cars);
+        reverse = false;
+    } else {
+        cars.sort((a, b) => (a.make > b.make) ? 1 : -1);
+        createTable(cars);
+        reverse = true;
+    }
 }
 function sortById() {
-    cars.sort((a, b) => (a.id > b.id) ? 1 : -1);
-    createTable(cars);
+    if (reverse) {
+        cars.sort((a, b) => (b.id > a.id) ? 1 : -1);
+        createTable(cars);
+        reverse = false;
+    } else {
+        cars.sort((a, b) => (a.id > b.id) ? 1 : -1);
+        createTable(cars);
+        reverse = true;
+    }
 }
 function sortByYear() {
-    cars.sort((a, b) => (a.year > b.year) ? 1 : -1);
-    createTable(cars);
+    if (reverse) {
+        cars.sort((a, b) => (b.year > a.year) ? 1 : -1);
+        createTable(cars);
+        reverse = false;
+    } else {
+        cars.sort((a, b) => (a.year > b.year) ? 1 : -1);
+        createTable(cars);
+        reverse = true;
+    }
 }
 function sortByModel() {
-    cars.sort((a, b) => (a.Model > b.Model) ? 1 : -1);
-    createTable(cars);
+    if (reverse) {
+        cars.sort((a, b) => (b.Model > a.Model) ? 1 : -1);
+        createTable(cars);
+        reverse = false;
+    } else {
+        cars.sort((a, b) => (a.Model > b.Model) ? 1 : -1);
+        createTable(cars);
+        reverse = true;
+
+    }
 }
 function sortByPrice() {
-    cars.sort((a, b) => (a.price > b.price) ? 1 : -1);
-    createTable(cars);
+    if (reverse) {
+        cars.sort((a, b) => (b.price > a.price) ? 1 : -1);
+        createTable(cars);
+        reverse = false;
+    } else {
+        cars.sort((a, b) => (a.price > b.price) ? 1 : -1);
+        createTable(cars);
+        reverse = true;
+    }
 }
 ////TABLE FUNCTIONS////
 function createTable(data) {
@@ -64,8 +100,8 @@ function filter() {
     var make = makeOptions.options[makeOptions.selectedIndex].value;
     var index = makeOptions.selectedIndex;
     makeOptions.selectedIndex = index;
-    //setSelectedValue(index);
-    //console.log(price)
+//    setSelectedValue(index);
+//    console.log(price)
     var filteredByMake = [];
     var filteredCars = [];
     for (var i = 0; i < cars.length; i++) {
@@ -98,7 +134,7 @@ function generateFilterOptions() {
     document.getElementById("makeOptions").innerHTML = options;
 }
 
-function setSelectedValue(index){
+function setSelectedValue(index) {
     document.getElementById("makeOptionsSelect").selectedIndex = index;
 }
 
