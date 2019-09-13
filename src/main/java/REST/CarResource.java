@@ -21,6 +21,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import util.EMF_Creator;
 
 /**
  * REST Web Service
@@ -31,7 +32,7 @@ import javax.ws.rs.core.MediaType;
 public class CarResource {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final CarFacade FACADE =  CarFacade.getFacade(Persistence.createEntityManagerFactory("pu"));
+    private static final CarFacade FACADE =  CarFacade.getFacade(EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE));
 
     @Context
     private UriInfo context;

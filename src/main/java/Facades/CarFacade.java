@@ -80,13 +80,13 @@ public class CarFacade {
         return carsDTO;
     }
 
-    public static void main(String[] args) {
-        CarFacade cf = getFacade(EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.DROP_AND_CREATE));
-        cf.addCar(new Car(2000, "VW", "Golf", 10000, "Angela Merkel", "am11111"));
-        cf.addCar(new Car(2008, "Ford", "Ka", 15000, "Donald Trump", "dt22222"));
-        cf.addCar(new Car(2017, "Audi", "RS7", 800000, "Kim Jung Un", "kj33333"));
-
-//cf.addCar(new Car(1999, "Ford", "Ka", 5000, "Peter", "AK47566"));
-        //cf.addCar(new Car(2002, "Audi", "A6", 60000, "Ib", "SK44320"));
-    }
+//    public static void main(String[] args) {
+//        CarFacade cf = getFacade(EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.DROP_AND_CREATE));
+//        cf.addCar(new Car(2000, "VW", "Golf", 10000, "Angela Merkel", "am11111"));
+//        cf.addCar(new Car(2008, "Ford", "Ka", 15000, "Donald Trump", "dt22222"));
+//        cf.addCar(new Car(2017, "Audi", "RS7", 800000, "Kim Jung Un", "kj33333"));
+//
+////cf.addCar(new Car(1999, "Ford", "Ka", 5000, "Peter", "AK47566"));
+//        //cf.addCar(new Car(2002, "Audi", "A6", 60000, "Ib", "SK44320"));
+//    }
 }
