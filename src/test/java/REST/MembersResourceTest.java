@@ -47,13 +47,14 @@ public class MembersResourceTest {
     @BeforeAll
     public static void setUpClass() {
         //emf = Persistence.createEntityManagerFactory("pu");
-        emf = EMF_Creator.createEntityManagerFactory(
+        /* emf = EMF_Creator.createEntityManagerFactory(
                 "pu",
                 "jdbc:mysql://localhost:3307/CA1_test",
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.DROP_AND_CREATE);
-
+         */
+        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
         httpServer = startServer();
 
         //Setup variables

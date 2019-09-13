@@ -30,12 +30,14 @@ public class MembersFacadeTest {
     @BeforeAll
     public static void setUpClass() {
         //emf = Persistence.createEntityManagerFactory("pu");
-        emf = EMF_Creator.createEntityManagerFactory(
+        /* emf = EMF_Creator.createEntityManagerFactory(
                 "pu",
                 "jdbc:mysql://localhost:3307/CA1_test",
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.DROP_AND_CREATE);
+         */
+        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
         facade = MembersFacade.getMembersFacade(emf);
 
 //Setup variables
