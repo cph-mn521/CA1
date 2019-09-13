@@ -88,4 +88,14 @@ public class MembersResource {
     public String getMemberBysId(@PathParam("sId") String sId) {
         return GSON.toJson(FACADE.getMemberBysId(sId));
     }
+
+    /**
+     *
+     */
+    @Path("populate")
+    @GET
+    @Consumes({MediaType.APPLICATION_JSON})
+    public void populate() {
+        FACADE.populate();
+    }
 }
