@@ -21,7 +21,9 @@ I dont know, noget med en liste der skal laves.
 
 ## Travis.
 
-E.Z. whatevs.
+[![Build Status](https://travis-ci.com/cph-mn521/CA1.svg?branch=master)](https://travis-ci.com/cph-mn521/CA1)
+
+E.Z. whatevs. (løl)
 
 ## Gruppe kontrakt.
 
