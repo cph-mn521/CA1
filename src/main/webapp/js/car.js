@@ -74,7 +74,7 @@ function createTable(data) {
     if (checkBox.checked === true) {
         var filteredData = filter();
         var table = "<table>";
-        table += "<tr><th><button onclick='sortById()'>Id</button></th><th><button onclick='sortByYear()'>Year</button></th><th><button onclick='sortByMake()'>Make</button></th><th><button onclick='sortByModel()'>Model</button></th><th><button onclick='sortByPrice()'>Price</button></th></tr>";
+        table += "<tr><th><button class='tableHeaderButton' onclick='sortById()'>Id</button></th><th><button class='tableHeaderButton' onclick='sortByYear()'>Year</button></th><th><button class='tableHeaderButton' onclick='sortByMake()'>Make</button></th><th><button class='tableHeaderButton' onclick='sortByModel()'>Model</button></th><th><button class='tableHeaderButton' onclick='sortByPrice()'>Price</button></th></tr>";
         for (var i = 0, max = filteredData.length; i < max; i++) {
             table += "<tr><td>" + filteredData[i]["id"] + "</td><td>" + filteredData[i]["year"] + "</td><td>" + filteredData[i]["make"] + "</td><td>" + filteredData[i]["Model"] + "</td><td>" + filteredData[i]["price"] + "</td></tr>"
 
@@ -83,7 +83,7 @@ function createTable(data) {
     } else {
 
         var table = "<table>";
-        table += "<tr><th><button onclick='sortById()'>Id</button></th><th><button onclick='sortByYear()'>Year</button></th><th><button onclick='sortByMake()'>Make</button></th><th><button onclick='sortByModel()'>Model</button></th><th><button onclick='sortByPrice()'>Price</button></th></tr>";
+        table += "<tr><th><button button class='tableHeaderButton' onclick='sortById()'>Id</button></th><th><button button class='tableHeaderButton' onclick='sortByYear()'>Year</button></th><th><button button class='tableHeaderButton' onclick='sortByMake()'>Make</button></th><th><button button class='tableHeaderButton' onclick='sortByModel()'>Model</button></th><th><button button class='tableHeaderButton' onclick='sortByPrice()'>Price</button></th></tr>";
         for (var i = 0, max = data.length; i < max; i++) {
             table += "<tr><td>" + data[i]["id"] + "</td><td>" + data[i]["year"] + "</td><td>" + data[i]["make"] + "</td><td>" + data[i]["Model"] + "</td><td>" + data[i]["price"] + "</td></tr>"
 
@@ -125,7 +125,7 @@ function generateFilterOptions() {
             makeList.push(cars[i]["make"]);
         }
     }
-    var options = "<select id='makeOptionsSelect'>";
+    var options = "<p>Choose make</p><select id='makeOptionsSelect'>";
     options += "<option value='any'>Any</option>";
     for (var i = 0; i < makeList.length; i++) {
         options += "<option value=" + makeList[i] + ">" + makeList[i] + "</option>";
