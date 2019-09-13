@@ -10,18 +10,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Martin
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Car.getAll", query = "SELECT c FROM Car c"),
+    @NamedQuery(name = "Car.deleteAllRows", query = "DELETE from Car"),
+})
 public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
     private int year;
     private String make;
     private String model;
@@ -91,11 +97,11 @@ public class Car implements Serializable {
         this.plateNumber = plateNumber;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

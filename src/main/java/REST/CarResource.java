@@ -52,7 +52,7 @@ public class CarResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMovies() {
-        return GSON.toJson(FACADE.getAllCars());
+        return GSON.toJson(FACADE.convertCarsToDTO(FACADE.getAllCars()));
     }
 
     /**

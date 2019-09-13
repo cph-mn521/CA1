@@ -1,9 +1,8 @@
 
-# Created by https://www.gitignore.io/api/java,linux,windows,netbeans
-# Edit at https://www.gitignore.io/?templates=java,linux,windows,netbeans
+# Created by https://www.gitignore.io/api/java,windows,netbeans
+# Edit at https://www.gitignore.io/?templates=java,windows,netbeans
 
 ### Java ###
-=======
 # Compiled class file
 *.class
 
@@ -28,47 +27,23 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-### Linux ###
-*~
-.~*
-
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
-
 ### NetBeans ###
 **/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+target/
 build/
 nbbuild/
 dist/
 nbdist/
 .nb-gradle/
 
-### Linux ###
-d
-dall
-pull
-push
-status
-commit
-credentials
-pushExistingRepo
-newRepo
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
-~
 
 # Dump file
 *.stackdump
@@ -89,16 +64,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/java,linux,windows,netbeans
-*.properties
-*.properties
-*.properties
-/TomCatGuideOne/TomCatGuideOne/target/
-/TestDB_Simple/target/
-/target/
+# End of https://www.gitignore.io/api/java,windows,netbeans
 /nbproject/
-/FOG/target/
-/FOG/nbproject/
-src/main/java/com/data/ipython.html
-
-src/main/webapp/pdf/

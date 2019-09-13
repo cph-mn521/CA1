@@ -12,7 +12,7 @@ import Entities.Car;
  * @author jonab
  */
 public class CarDTO {
-    private long id;
+    private String id;
     private int year;
     private String make;
     private String Model;
@@ -24,6 +24,26 @@ public class CarDTO {
         this.make = car.getMake();
         this.Model = car.getModel();
         this.price = car.getPrice();
+    }
+    
+    public String getId() {
+        return id;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public double getPrice() {
+        return price;
     }
     
     
