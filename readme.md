@@ -21,12 +21,13 @@ I dont know, noget med en liste der skal laves.
 
 ## Travis.
 
-E.Z. whatevs.
+[![Build Status](https://travis-ci.com/cph-mn521/CA1.svg?branch=master)](https://travis-ci.com/cph-mn521/CA1)
+
+E.Z. whatevs. (løl)
 
 ## Gruppe kontrakt.
 
-Den skal laves, så vi skal lige blive enige om nogen ting.
-
+https://docs.google.com/document/d/1tK_97uqhAP0tduCnGQwu3CzznJowTRtHsyduqpuYvIo/edit
 
 ## Who don did what.
 
@@ -40,7 +41,7 @@ Vi skal jo teste det hele godt. tænker vi skal prøve at lave noget sjovt med d
 
 # Extra Features
 
-## Nested Enteties.
+## Nested Entities.
 
 Det er vel fremtiden at prøve at lave nested enteties som kan peje til hinanden.
 
