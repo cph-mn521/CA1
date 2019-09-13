@@ -5,8 +5,14 @@
  */
 package Facades;
 
+import Cettia.bootstrap;
 import Entities.Joke;
+import io.cettia.DefaultServer;
+import io.cettia.Server;
+import static io.cettia.ServerSocketPredicates.tag;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -53,12 +59,19 @@ public class JokeFacade {
             e.printStackTrace();
         } finally {
             em.close();
+            Server s = bootstrap.getServer();
+            Map<String, Object> output = new LinkedHashMap<>();
+            String msg = "Joke nr " + J.getId() + " fik og har nu " + J.getVotes() + " stemmer";
+            output.put("text", msg);
+            s.find(tag("channel:joke")).send("message", output);
         }
     }
 
     public double vote(Joke j, int Score) {
+
         j.setScore(j.getScore() + Score);
         j.setVotes(j.getVotes() + 1);
+
         return j.getScore() / j.getVotes();
     }
 ///////////////////////////////////////////////////////////////////////////////
