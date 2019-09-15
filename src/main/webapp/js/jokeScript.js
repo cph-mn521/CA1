@@ -42,7 +42,7 @@ function getScoreboard() {
 }
 
 function jokeID(e){
-    fetch(url+"/"+e.target.parentNode.id);
+    fetch(url+"/"+e.target.parentNode.id)
             .then(function (response) {
                 return response.json();
             })
