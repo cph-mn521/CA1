@@ -22,7 +22,9 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
     @NamedQuery(name = "Members.getAll", query = "SELECT m FROM Members m"),
     @NamedQuery(name = "Members.deleteAllRows", query = "DELETE from Members"),
-    @NamedQuery(name = "Members.getBysId", query = "SELECT m FROM Members m WHERE m.sId LIKE :sId")
+    @NamedQuery(name = "Members.getBysId", query = "SELECT m FROM Members m WHERE m.sId LIKE :sId"),
+    @NamedQuery(name = "Members.count", query = "SELECT COUNT(m) FROM Members m")
+
 })
 public class Members implements Serializable {
 
