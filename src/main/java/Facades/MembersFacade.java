@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package facade;
+package Facades;
 
 import Entities.Members;
 import java.util.List;
@@ -48,8 +48,7 @@ public class MembersFacade {
 
     private Boolean isPopulated() {
         EntityManager em = emf.createEntityManager();
-
-        return em.find(Members.class, 1) == null;
+        return em.find(Members.class, (long) 1) != null;
     }
 
     public void populate() {
@@ -74,5 +73,10 @@ public class MembersFacade {
             em.close();
         }
 
+    }
+
+    public long getMembersCount() {
+        EntityManager em = emf.createEntityManager();
+        return em.createNamedQuery("Members.count", Long.class).getSingleResult();
     }
 }

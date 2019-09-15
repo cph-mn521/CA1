@@ -7,7 +7,7 @@ package REST;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import facade.MembersFacade;
+import Facades.MembersFacade;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Produces;
@@ -90,12 +90,19 @@ public class MembersResource {
     }
 
     /**
-     *
+     * Populates the database.
      */
     @Path("populate")
     @GET
     @Consumes({MediaType.APPLICATION_JSON})
     public void populate() {
         FACADE.populate();
+    }
+
+    @Path("count")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMembersCount() {
+        return GSON.toJson(FACADE.getMembersCount());
     }
 }
