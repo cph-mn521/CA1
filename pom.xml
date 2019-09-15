@@ -12,20 +12,11 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <remote.server>https://www.matheradical.dk/manager/text</remote.server>
+       <!-- <remote.server>https://www.matheradical.dk/manager/text</remote.server>-->
+       <remote.server>https://nbang.dk/manager/text</remote.server>
     </properties>
     
     <dependencies>
-        
-        
-        <dependency>
-            <groupId>com.microsoft.signalr</groupId>
-            <artifactId>signalr</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        
-        
-        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.core</artifactId>
