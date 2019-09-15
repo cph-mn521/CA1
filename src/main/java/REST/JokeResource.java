@@ -64,7 +64,13 @@ public class JokeResource {
         List<Joke> j = FACADE.getAll();
         return GSON.toJson(j);
     }
-
+    @Path("/{id}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getById(@PathParam("id") long id) {
+        return GSON.toJson(FACADE.getById(id));
+    }
+    
     @GET
     @Path("pop")
     public void populate() {
