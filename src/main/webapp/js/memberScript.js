@@ -23,3 +23,7 @@ function buildTable(){
   }
 buildTable();
 
+function refresh(){
+    table.innerHTML = "";
+    buildTable();
+}
