@@ -36,7 +36,7 @@ document.querySelector("#index form").addEventListener("submit", e => {
     };
 
     // Opens and initializes a socket
-    const uri = `http://localhost:8080/CA1/cettia?channel=lounge&username=${encodeURIComponent(username)}`;
+    const uri = `https://nbang.dk/CA1/cettia?channel=lounge&username=${encodeURIComponent(username)}`;
     const socket = cettia.open(uri);
     const addSystemMessage = text => addMessage({sender: "system", text});
     const showEditor = ()=>{

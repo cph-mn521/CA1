@@ -13,7 +13,7 @@ const addMessage2 = ({sender, text}) => {
     $li.scrollIntoView();
 }
 
-const uri2 = `http://localhost:8080/CA1/cettia?channel=joke`;
+const uri2 = `https://nbang.dk/CA1/cettia?channel=joke`;
 const socket2 = cettia.open(uri2);
 const addSystemMessage = text => addMessage2({sender: "system", text});
 

@@ -5,7 +5,7 @@
  */
 
 var scoreboard = $('#table')[0];
-var url = "http://localhost:8080/CA1/api/joke"
+var url = "https://nbang.dk/CA1/api/joke"
 var joke;
 var form = $("#pointForm")[0]
 
