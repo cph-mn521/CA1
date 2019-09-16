@@ -3,7 +3,7 @@ var cars;
 var reverse = false;
 ////FETCH////
 function getData() {
-    fetch("http://localhost:8080/CA1/api/car/all")
+    fetch("/CA1/api/car/all")
             .then(res => res.json()) //in flow1, just do it
             .then(data => {
                 cars = data;
