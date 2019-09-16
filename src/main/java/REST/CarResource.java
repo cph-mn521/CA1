@@ -32,7 +32,7 @@ import util.EMF_Creator;
 public class CarResource {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final CarFacade FACADE =  CarFacade.getFacade(EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE));
+    private static final CarFacade FACADE = CarFacade.getFacade(EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE));
 
     @Context
     private UriInfo context;
@@ -42,13 +42,13 @@ public class CarResource {
      */
     public CarResource() {
     }
-    
+
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
         return "{\"msg\":\"Hej verden!\"}";
     }
-    
+
     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
@@ -76,5 +76,11 @@ public class CarResource {
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
     public void putXml(String content) {
+    }
+
+    @GET
+    @Path("populate")
+    public void populate() {
+        FACADE.populate();
     }
 }

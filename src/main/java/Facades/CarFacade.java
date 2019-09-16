@@ -80,6 +80,13 @@ public class CarFacade {
         return carsDTO;
     }
 
+    public void populate() {
+        CarFacade cf = getFacade(EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.DROP_AND_CREATE));
+        cf.addCar(new Car(2000, "VW", "Golf", 10000, "Angela Merkel", "am11111"));
+        cf.addCar(new Car(2008, "Ford", "Ka", 15000, "Donald Trump", "dt22222"));
+        cf.addCar(new Car(2017, "Audi", "RS7", 800000, "Kim Jung Un", "kj33333"));
+    }
+
 //    public static void main(String[] args) {
 //        CarFacade cf = getFacade(EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.DROP_AND_CREATE));
 //        cf.addCar(new Car(2000, "VW", "Golf", 10000, "Angela Merkel", "am11111"));
